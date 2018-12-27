@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { getMetricMetaInfo } from '../utils/helpers'
 
 export default class AddEntry extends React.Component {
@@ -10,6 +10,36 @@ export default class AddEntry extends React.Component {
         swim: 0,
         sleep: 0,
         eat: 0
+    }
+
+    increment = (metric) => {
+        const { max, step } = getMetricMetaInfo(metric)
+
+        this.setState((oldState) => {
+            const count = oldState[metric] + step
+
+            return {
+                ...state,
+                [metric]: count > max ? max : count
+            }
+        })
+    }
+
+    decrement = (metric) => {
+        this.setState((oldState) => {
+            const count = oldState[metric] - getMetricMetaInfo(metric).step
+
+            return {
+                ...state,
+                [metric]: count < 0 ? 0 : count
+            }
+        })
+    }
+
+    slide = (metric, value) => {
+        this.setState(() => ({
+            [metric]: value
+        }))
     }
 
     render() {
