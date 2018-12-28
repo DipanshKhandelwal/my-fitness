@@ -31,7 +31,7 @@ export default class AddEntry extends React.Component {
             const count = oldState[metric] + step
 
             return {
-                ...state,
+                ...oldState,
                 [metric]: count > max ? max : count
             }
         })
@@ -42,7 +42,7 @@ export default class AddEntry extends React.Component {
             const count = oldState[metric] - getMetricMetaInfo(metric).step
 
             return {
-                ...state,
+                ...oldState,
                 [metric]: count < 0 ? 0 : count
             }
         })
@@ -59,7 +59,7 @@ export default class AddEntry extends React.Component {
         const entry = this.state
 
         // Update Redux
-        
+
         this.setState({
             run: 0,
             bike: 0,
