@@ -1,6 +1,8 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { getMetricMetaInfo } from '../utils/helpers'
+import Slider from './Slider';
+import Stepper from './Stepper';
 
 export default class AddEntry extends React.Component {
 
@@ -54,6 +56,20 @@ export default class AddEntry extends React.Component {
                     return (
                         <View key={key}>
                             {getIcon()}
+                            {
+                                type == 'slider'
+                                    ? <Slider
+                                        value={value}
+                                        onChange={(value) => this.slide(key, value)}
+                                        {...rest}
+                                    />
+                                    : <Stepper
+                                        value={value}
+                                        onIncrement={() => this.increment(key)}
+                                        onDecrement={() => this.decrement(key)}
+                                        {...rest}
+                                    />
+                            }
                         </View>
                     )
                 })}
