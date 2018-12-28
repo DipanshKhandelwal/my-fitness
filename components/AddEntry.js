@@ -43,9 +43,20 @@ export default class AddEntry extends React.Component {
     }
 
     render() {
+        const metaInfo = getMetricMetaInfo()
+
         return (
             <View>
-                {getMetricMetaInfo('sleep').getIcon()}
+                {Object.keys(metaInfo).map((key) => {
+                    const { getIcon, type, ...rest } = metaInfo[key]
+                    const value = this.state[key]
+
+                    return (
+                        <View key={key}>
+                            {getIcon()}
+                        </View>
+                    )
+                })}
             </View>
         )
     }
