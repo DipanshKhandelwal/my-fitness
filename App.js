@@ -5,12 +5,13 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import History from './components/History'
-import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
+import { createMaterialTopTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import StatusBar from './components/StatusBar';
+import StatusBar from './components/StatusBar'
+import EntryDetail from './components/EntryDetail'
 
-const Tabs = createAppContainer(createMaterialTopTabNavigator({
+const Tabs = createMaterialTopTabNavigator({
   History: {
     screen: History,
     navigationOptions: {
@@ -44,7 +45,25 @@ const Tabs = createAppContainer(createMaterialTopTabNavigator({
       },
     }
   }
-))
+)
+
+const MainNavigator = createAppContainer(createStackNavigator({
+  Home: {
+    screen: Tabs,
+    navigationOptions: {
+      header: null
+    }
+  },
+  EntryDetail: {
+    screen: EntryDetail,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    }
+  }
+}))
 
 export default class App extends React.Component {
   render() {
@@ -52,7 +71,7 @@ export default class App extends React.Component {
       <Provider store={createStore(reducer)} >
         <View style={{ flex: 1 }} >
           <StatusBar backgroundColor={purple} basStyle='light-content' />
-          <Tabs />
+          <MainNavigator />
         </View>
       </Provider>
     );
