@@ -24,8 +24,11 @@ export default class Live extends React.Component {
 
         if (status === 'denied') {
             return (
-                <View>
-                    <Text>Denied</Text>
+                <View style={styles.center} >
+                    <Foundation name='alert' size={50} />
+                    <Text style={{ textAlign: 'center' }} >
+                        You denied your location. You can fix this by visiting your settings and enabling location services for the app.
+                    </Text>
                 </View>
             )
         }
