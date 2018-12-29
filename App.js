@@ -8,6 +8,7 @@ import History from './components/History'
 import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation'
 import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import StatusBar from './components/StatusBar';
 
 const Tabs = createAppContainer(createMaterialTopTabNavigator({
   History: {
@@ -50,6 +51,7 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer)} >
         <View style={{ flex: 1 }} >
+          <StatusBar backgroundColor={purple} basStyle='light-content' />
           <Tabs />
         </View>
       </Provider>
