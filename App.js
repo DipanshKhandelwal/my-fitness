@@ -11,6 +11,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import StatusBar from './components/StatusBar'
 import EntryDetail from './components/EntryDetail'
 import Live from './components/Live'
+import { setLocalNotifications } from './utils/helpers'
 
 const Tabs = createMaterialTopTabNavigator({
   History: {
@@ -74,6 +75,11 @@ const MainNavigator = createAppContainer(createStackNavigator({
 }))
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotifications()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)} >

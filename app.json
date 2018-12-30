@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "my-fitness",
+    "description": "The best triathlon tracker ever",
     "slug": "my-fitness",
     "privacy": "public",
     "sdkVersion": "31.0.0",
@@ -11,6 +12,9 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "notification": {
+      "icon": "./assets/icon.png"
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,7 +27,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.my-fitness.exp"
+    },
+    "android": {
+      "package": "org.my-fitness.exp"
     }
   }
 }
