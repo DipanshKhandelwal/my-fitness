@@ -99,9 +99,7 @@ class AddEntry extends React.Component {
     }
 
     toHome = () => {
-        this.props.navigation.dispatch(NavigationOptions.back({
-            key: 'AddEntry'
-        }))
+        this.props.navigation.navigate('AddEntry')
     }
 
     render() {
